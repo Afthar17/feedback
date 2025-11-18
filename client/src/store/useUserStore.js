@@ -20,7 +20,7 @@ export const useUserStore = create((set) => ({
         email,
         password,
       });
-      set({ user: response.data, loading: false });
+      set({ user: response.data.user, loading: false });
     } catch (error) {
       set({ loading: false });
       return toast.error(error.response.data.message || "Something went wrong");
@@ -31,7 +31,7 @@ export const useUserStore = create((set) => ({
     const { email, password } = data;
     try {
       const response = await axios.post("/auth/login", { email, password });
-      set({ user: response.data, loading: false });
+      set({ user: response.data.user, loading: false });
     } catch (error) {
       set({ loading: false });
       return toast.error(error.response.data.message || "Something went wrong");

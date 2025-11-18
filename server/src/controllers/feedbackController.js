@@ -52,7 +52,7 @@ export const getFeedback = async (req, res) => {
 export const getAllFeedbacks = async (req, res) => {
   try {
     const feedbacks = await Feedback.find().populate("user", "name email");
-    res.atatus(200).json(feedbacks);
+    res.status(200).json(feedbacks);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to get feedbacks" });

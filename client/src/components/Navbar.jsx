@@ -21,7 +21,7 @@ const Navbar = () => {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-10 font-semibold text-sm">
           {user && <Link to="/">Home</Link>}
-
+          {user?.role === "admin" && <Link to="/dashboard">Dashboard</Link>}
           {user ? (
             <button
               className="hover:text-gray-300 transition"
@@ -69,6 +69,15 @@ const Navbar = () => {
                 className="hover:text-gray-300"
               >
                 Home
+              </Link>
+            )}
+            {user?.role === "admin" && (
+              <Link
+                to="/dashboard"
+                onClick={() => setNavOpen(false)}
+                className="hover:text-gray-300"
+              >
+                Admin
               </Link>
             )}
 
